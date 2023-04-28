@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "question": "What is the output of the following code?",
+    "code": "console.log(1);\nsetTimeout(() => {\n  console.log(2);\n}, 0);\nconsole.log(3);",
+    "answers": ["1, 2, 3", "1, 3, 2", "2, 1, 3", "3, 1, 2"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 2,
+    "question": "Which method is used to handle errors in asynchronous JavaScript code?",
+    "code": null,
+    "answers": [
+      "try/catch blocks",
+      "if/else statements",
+      "switch statements",
+      "catch method"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 3,
+    "question": "What is a Promise in JavaScript?",
+    "code": null,
+    "answers": [
+      "An object representing the eventual completion or failure of an asynchronous operation and its resulting value",
+      "A function that takes a callback function as its argument",
+      "An object that has its own methods and properties",
+      "A data type that can hold multiple values"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 4,
+    "question": "What does the async keyword do in a function declaration?",
+    "code": null,
+    "answers": [
+      "It makes the function return a Promise",
+      "It makes the function asynchronous",
+      "It creates a new Promise object",
+      "It creates a new async function object"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 5,
+    "question": "What does the await keyword do in an async function?",
+    "code": null,
+    "answers": [
+      "It waits for a Promise to be resolved and returns its value",
+      "It waits for a Promise to be rejected and returns its error message",
+      "It waits for a specified amount of time before continuing execution",
+      "It waits for the next tick of the event loop before continuing execution"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 6,
+    "question": "What is the purpose of the callback function in asynchronous JavaScript code?",
+    "code": null,
+    "answers": [
+      "To return a value from the asynchronous operation",
+      "To handle errors that occur during the asynchronous operation",
+      "To execute code when the asynchronous operation is complete",
+      "To specify the amount of time to wait before executing the asynchronous operation"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 7,
+    "question": "What is an event loop in JavaScript?",
+    "code": null,
+    "answers": [
+      "A mechanism for handling browser events such as user input and network requests",
+      "A mechanism for queuing and executing JavaScript code in a single-threaded environment",
+      "A mechanism for caching frequently-used data in memory to improve performance",
+      "A mechanism for optimizing JavaScript code by removing unused variables and functions"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 8,
+    "question": "Which of the following statements about Promises is true?",
+    "code": null,
+    "answers": [
+      "Promises are only used for asynchronous operations",
+      "Promises can only be resolved or rejected once",
+      "Promises cannot be chained together",
+      "Promises are synchronous"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 9,
+    "question": "What is the purpose of the finally() method in a Promise?",
+    "code": null,
+    "answers": [
+      "To handle errors that occur during the Promise chain",
+      "To execute code when the Promise is resolved",
+      "To execute code when the Promise is rejected",
+      "To execute code regardless of whether the Promise is resolved or rejected"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 10,
+    "question": "What is the purpose of the Promise.all() method?",
+    "code": null,
+    "answers": [
+      "To resolve a Promise when all the Promises in an array have resolved",
+      "To reject a Promise when all the Promises in an array have rejected",
+      "To wait for the first Promise in an array to resolve before continuing execution",
+      "To wait for the first Promise in an array to reject before continuing execution"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 11,
+    "question": "What is the output of the following code?",
+    "code": "console.log('start');\nsetTimeout(() => console.log('timeout'), 0);\nconsole.log('end');",
+    "answers": [
+      "start, timeout, end",
+      "start, end, timeout",
+      "end, timeout, start",
+      "timeout, start, end"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 12,
+    "question": "What is the output of the following code?",
+    "code": "console.log('start');\nasync function foo() {\n  await bar();\n  console.log('async');\n}\nfunction bar() {\n  console.log('sync');\n}\nfoo();\nconsole.log('end');",
+    "answers": [
+      "start, sync, async, end",
+      "start, async, sync, end",
+      "sync, start, async, end",
+      "sync, start, end, async"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 13,
+    "question": "What is the output of the following code?",
+    "code": "console.log('start');\nconst promise1 = new Promise((resolve, reject) => {\n  setTimeout(() => resolve('promise1'), 1000);\n});\nconst promise2 = new Promise((resolve, reject) => {\n  setTimeout(() => resolve('promise2'), 500);\n});\nPromise.all([promise1, promise2]).then(([result1, result2]) => {\n  console.log(result1);\n  console.log(result2);\n});\nconsole.log('end');",
+    "answers": [
+      "start, end, promise1, promise2",
+      "start, promise2, promise1, end",
+      "promise2, promise1, start, end",
+      "promise1, promise2, start, end"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 14,
+    "question": "What is the output of the following code?",
+    "code": "console.log('start');\nasync function foo() {\n  const result = await Promise.resolve('async');\n  console.log(result);\n}\nfoo();\nconsole.log('end');",
+    "answers": [
+      "start, async, end",
+      "start, end, async",
+      "async, start, end",
+      "async, end, start"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 15,
+    "question": "What is the output of the following code?",
+    "code": "console.log('start');\nasync function foo() {\n  const result = await Promise.reject('async');\n  console.log(result);\n}\nfoo().catch((error) => console.log(error));\nconsole.log('end');",
+    "answers": [
+      "start, async, end",
+      "start, end, async",
+      "async, start, end",
+      "async, end, start"
+    ],
+    "correctAnswer": 3
+  }
+]

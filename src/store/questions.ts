@@ -1,16 +1,18 @@
 import { create } from 'zustand'
-import { type Question } from '../types'
+import { type Topycs, type Question } from '../types'
 import confetti from 'canvas-confetti'
 import { persist } from 'zustand/middleware'
 
 interface State {
   questions: Question[]
   currentQuestion: number
+  topic: Topycs
   fetchQuestions: (limit: number) => Promise<void>
   selectedAnswer: (questionId: number, answerIndex: number) => void
   goNextQuestion: () => void
   goPreviousQuestion: () => void
   reset: () => void
+  changeTopic: (topic: Topycs) => void
 }
 
 const useQuestionsStore = create<State>()(
@@ -18,9 +20,11 @@ const useQuestionsStore = create<State>()(
     (set, get) => ({
       questions: [],
       currentQuestion: 0,
+      topic: 'general',
 
       fetchQuestions: async (limit) => {
-        const res = await fetch('http://127.0.0.1:5173/data.json')
+        const { topic } = get()
+        const res = await fetch(`http://127.0.0.1:5173/${topic}.json`)
         const data = await res.json()
 
         const questions = data.sort(() => Math.random() - 0.5).slice(0, limit)
@@ -86,6 +90,10 @@ const useQuestionsStore = create<State>()(
 
       reset: () => {
         set({ questions: [], currentQuestion: 0 })
+      },
+
+      changeTopic: (topic) => {
+        set({ topic, questions: [], currentQuestion: 0 })
       }
     }),
     { name: 'questions' }

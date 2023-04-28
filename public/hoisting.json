@@ -1,0 +1,238 @@
+[
+  {
+    "id": 1,
+    "question": "What is the output of the following code?",
+    "code": "console.log(a);\nvar a = 5;",
+    "answers": ["undefined", "5", "ReferenceError", "TypeError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 2,
+    "question": "What is the output of the following code?",
+    "code": "let a = 5;\nfunction multiply(b) {\n  console.log(a);\n  return a * b;\n}\nlet result = multiply(3);\nconsole.log(result);",
+    "answers": [
+      "undefined, 15",
+      "5, 15",
+      "5, undefined",
+      "undefined, undefined"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 3,
+    "question": "What is the output of the following code?",
+    "code": "var a = 5;\nfunction multiply(b) {\n  console.log(a);\n  return a * b;\n}\nvar result = multiply(3);\nconsole.log(result);\nvar a = 10;",
+    "answers": ["undefined, 15", "5, 15", "10, 15", "ReferenceError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 4,
+    "question": "What is the output of the following code?",
+    "code": "let a = 5;\nfunction multiply(b) {\n  let a = 10;\n  console.log(a);\n  return a * b;\n}\nlet result = multiply(3);\nconsole.log(result);\nconsole.log(a);",
+    "answers": [
+      "10, 30, 5",
+      "10, 30, undefined",
+      "5, 30, undefined",
+      "5, 30, 5"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 5,
+    "question": "What is the output of the following code?",
+    "code": "function foo() {\n  console.log(a);\n}\nlet a = 5;\nfoo();",
+    "answers": ["undefined", "5", "ReferenceError", "TypeError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 6,
+    "question": "What is the output of the following code?",
+    "code": "function outer() {\n  let a = 10;\n  function inner() {\n    console.log(a);\n  }\n  return inner;\n}\nlet innerFunc = outer();\ninnerFunc();",
+    "answers": ["undefined", "10", "ReferenceError", "TypeError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 7,
+    "question": "What is the output of the following code?",
+    "code": "let a = 10;\nfunction outer() {\n  let b = 5;\n  function inner() {\n    let c = 3;\n    console.log(a + b + c);\n  }\n  return inner;\n}\nlet innerFunc = outer();\ninnerFunc();",
+    "answers": ["10", "18", "23", "ReferenceError"],
+    "correctAnswer": 2
+  },
+  {
+    "id": 8,
+    "question": "What is the output of this code?",
+    "code": "console.log(a);\nvar a = 10;",
+    "answers": ["10", "undefined", "ReferenceError", "null"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 9,
+    "question": "What is the output of this code?",
+    "code": "function foo() {\n  console.log(a);\n  var a = 1;\n}\nfoo();",
+    "answers": ["1", "undefined", "ReferenceError", "null"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 10,
+    "question": "What is the output of this code?",
+    "code": "var a = 10;\nfunction foo() {\n  console.log(a);\n}\nfoo();",
+    "answers": ["10", "undefined", "ReferenceError", "null"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 11,
+    "question": "What will be the output of the following code?",
+    "code": "var a = 5;\n(function() {\n  console.log(a);\n  var a = 10;\n})();",
+    "answers": ["undefined", "5", "10", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 12,
+    "question": "What is the scope of a variable declared using the 'let' keyword?",
+    "code": null,
+    "answers": ["Global scope", "Local scope", "Function scope", "Block scope"],
+    "correctAnswer": 3
+  },
+  {
+    "id": 13,
+    "question": "What will be the output of the following code?",
+    "code": "var a = 5;\nfunction myFunc() {\n  console.log(a);\n}\n(function() {\n  var a = 10;\n  myFunc();\n})();",
+    "answers": ["undefined", "5", "10", "ReferenceError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 14,
+    "question": "What will be the output of the following code?",
+    "code": "var a = 10;\n(function() {\n  console.log(a);\n  var a = 20;\n})();",
+    "answers": ["undefined", "10", "20", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 15,
+    "question": "What is the difference between lexical scope and dynamic scope?",
+    "code": null,
+    "answers": [
+      "Lexical scope refers to the visibility of a variable based on its position in the source code, while dynamic scope refers to the visibility of a variable based on the order of function calls at runtime.",
+      "Lexical scope refers to the visibility of a variable based on the order of function calls at runtime, while dynamic scope refers to the visibility of a variable based on its position in the source code.",
+      "Lexical scope and dynamic scope are the same thing.",
+      "None of the above."
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 16,
+    "question": "What is the scope chain in JavaScript?",
+    "code": null,
+    "answers": [
+      "The scope chain is a list of all the scopes that a variable can access at runtime.",
+      "The scope chain is a list of all the scopes that a function can access at runtime.",
+      "The scope chain is a list of all the variables that are accessible from a particular function.",
+      "The scope chain is a list of all the variables that are declared in a particular function."
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 17,
+    "question": "What is a closure in JavaScript?",
+    "code": null,
+    "answers": [
+      "A closure is a function that has access to variables in its outer (enclosing) scope, even after the outer function has returned.",
+      "A closure is a function that has access to variables in its inner (enclosed) scope, even after the inner function has returned.",
+      "A closure is a function that has access to variables in both its inner and outer scopes.",
+      "A closure is a function that has no access to variables in any scope."
+    ],
+    "correctAnswer": 0
+  },
+
+  {
+    "id": 18,
+    "question": "What is the output of this code?",
+    "code": "var a = 10;\nfunction foo() {\n  var b = 20;\n  function bar() {\n    var c = 30;\n    console.log(a + b + c);\n  }\n  bar();\n}\nfoo();",
+    "answers": ["60", "50", "40", "30"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 19,
+    "question": "What is the output of this code?",
+    "code": "var a = 10;\nfunction foo() {\n  var b = 20;\n  function bar() {\n    var a = 15;\n    console.log(a + b);\n  }\n  bar();\n}\nfoo();",
+    "answers": ["35", "30", "25", "10"],
+    "correctAnswer": 2
+  },
+  {
+    "id": 20,
+    "question": "What is the output of this code?",
+    "code": "function foo() {\n  console.log(a);\n}\nvar a = 1;\nfoo();\nvar a = 2;",
+    "answers": ["1", "2", "undefined", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 21,
+    "question": "What is the output of this code?",
+    "code": "var a = 1;\nfunction bar() {\n  var a = 2;\n  function baz() {\n    console.log(a);\n  }\n  baz();\n}\nbar();",
+    "answers": ["1", "2", "undefined", "ReferenceError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 22,
+    "question": "What is the output of this code?",
+    "code": "var a = 1;\nfunction bar() {\n  var a = 2;\n  function baz() {\n    console.log(a);\n  }\n  return baz;\n}\nvar fn = bar();\nfn();",
+    "answers": ["1", "2", "undefined", "ReferenceError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 23,
+    "question": "What will be the output of the following code?",
+    "code": "let a = 'hello';\nfunction log() {\n  console.log(a);\n  let a = 'world';\n}\nlog();",
+    "answers": ["'hello'", "'world'", "undefined", "ReferenceError"],
+    "correctAnswer": 3
+  },
+  {
+    "id": 24,
+    "question": "What will be the output of the following code?",
+    "code": "let x = 10;\nfunction foo() {\n  console.log(x);\n}\nfunction bar() {\n  let x = 20;\n  foo();\n}\nbar();",
+    "answers": ["10", "20", "undefined", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 25,
+    "question": "What is the output of the following code?",
+    "code": "var x = 10;\n(function () {\n    console.log(x);\n    var x = 20;\n})();",
+    "answers": ["10", "20", "undefined", "ReferenceError"],
+    "correctAnswer": 2
+  },
+  {
+    "id": 26,
+    "question": "What is the value of y?",
+    "code": "function foo() {\n  var x = 1;\n  function bar() {\n    var x = 2;\n  }\n  bar();\n  console.log(x);\n}\nfoo();\nvar y = x;",
+    "answers": ["1", "2", "undefined", "ReferenceError"],
+    "correctAnswer": 3
+  },
+  {
+    "id": 27,
+    "question": "What is the value of y?",
+    "code": "var x = 1;\nfunction foo() {\n  var x = 2;\n  function bar() {\n    var x = 3;\n    console.log(x);\n  }\n  bar();\n}\nfoo();\nvar y = x;",
+    "answers": ["1", "2", "3", "undefined"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 28,
+    "question": "What will be the output of the following code?",
+    "code": "let x = 10;\n(function() {\n  console.log(x);\n  x = 20;\n})();\nconsole.log(x);",
+    "answers": ["10 20", "undefined 20", "10 undefined", "undefined undefined"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 29,
+    "question": "What will be the output of the following code?",
+    "code": "function foo() {\n  console.log(a);\n  let a = 10;\n}\nfoo();",
+    "answers": ["undefined", "null", "10", "ReferenceError"],
+    "correctAnswer": 3
+  },
+  {
+    "id": 30,
+    "question": "What will be the output of the following code?",
+    "code": "let x = 10;\nfunction foo() {\n  console.log(x);\n}\nfunction bar() {\n  let x = 20;\n  foo();\n}\nbar();",
+    "answers": ["10", "20", "undefined", "ReferenceError"],
+    "correctAnswer": 0
+  }
+]

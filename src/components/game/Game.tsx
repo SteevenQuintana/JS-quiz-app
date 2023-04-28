@@ -42,9 +42,11 @@ const Question: React.FC<QuestionProps> = ({ info }) => {
     <Card variant='outlined' sx={{ p: 2, textAlign: 'left', marginTop: 0.5 }}>
       <Typography variant='h5'>{info.question}</Typography>
 
-      <SyntaxHighlighter language='javascript' style={tomorrowNightBright}>
-        {info.code}
-      </SyntaxHighlighter>
+      {info.code != null && (
+        <SyntaxHighlighter language='javascript' style={tomorrowNightBright}>
+          {info.code}
+        </SyntaxHighlighter>
+      )}
 
       <List sx={{ bgcolor: '#333' }} disablePadding>
         {info.answers.map((answer, index) => (

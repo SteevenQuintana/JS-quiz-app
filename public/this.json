@@ -1,0 +1,169 @@
+[
+  {
+    "id": 1,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX() {\n    return () => {\n      console.log(this.x);\n    }\n  }\n};\n\nconst boundGetX = obj.getX().bind(obj);\nboundGetX();",
+    "answers": ["5", "undefined", "null", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 2,
+    "question": "What is the output of the following code?",
+    "code": "function Person(name) {\n  this.name = name;\n}\nconsole.log(this)",
+    "answers": ["undefined", "null", "Window", "ReferenceError"],
+    "correctAnswer": 2
+  },
+  {
+    "id": 3,
+    "question": "What is the output of the following code?",
+    "code": "class Person {\n  constructor(name) {\n    this.name = name;\n  }\n  sayHello() {\n    console.log('Hello, ' + this.name + '!');\n  }\n}\n\nconst person = new Person('John');\nconst sayHello = person.sayHello;\nsayHello();",
+    "answers": [
+      "TypeError",
+      "'Hello, John!'",
+      "'Hello, undefined!'",
+      "'Hello, null!'"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 4,
+    "question": "What is the output of the following code?",
+    "code": "const obj1 = {\n  x: 5,\n  getX() {\n    return this.x;\n  }\n};\n\nconst obj2 = {\n  x: 10\n};\n\nconst boundGetX = obj1.getX.bind(obj2);\nconsole.log(boundGetX());",
+    "answers": ["5", "10", "undefined", "TypeError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 5,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX: function() {\n    setTimeout(function() {\n      console.log(this.x);\n    }, 1000);\n  }\n};\n\nobj.getX();",
+    "answers": ["5", "undefined", "ReferenceError", "TypeError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 6,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX: function() {\n    setTimeout(() => {\n      console.log(this.x);\n    }, 1000);\n  }\n};\n\nobj.getX();",
+    "answers": ["5", "undefined", "ReferenceError", "TypeError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 7,
+    "question": "What is the output of the following code?",
+    "code": "function add(a, b) {\n  console.log(this);\n  return a + b;\n}\n\nconst boundAdd = add.bind({ x: 5 });\nconsole.log(boundAdd(2, 3));",
+    "answers": ["[object Object]", "5", "TypeError", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 8,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX() {\n    return () => {\n      console.log(this.x);\n    };\n  }\n};\n\nconst getX = obj.getX();\ngetX();",
+    "answers": ["5", "undefined", "ReferenceError", "TypeError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 9,
+    "question": "What is the output of the following code?",
+    "code": "const obj1 = {\n  x: 5,\n  obj2: {\n    x: 10,\n    getX: function() {\n      console.log(this.x);\n    }\n  }\n};\n\nobj1.obj2.getX();",
+    "answers": ["5", "10", "undefined", "ReferenceError"],
+    "correctAnswer": 1
+  },
+  {
+    "id": 10,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX() {\n    return function() {\n      console.log(this.x);\n    }.bind(this);\n  }\n};\n\nconst getX = obj.getX.bind({ x: 10 });\ngetX()();",
+    "answers": ["5", "10", "undefined", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 11,
+    "question": "What is the output of the following code?",
+    "code": "const person = {\n  name: 'John',\n  greet() {\n    console.log(this.name);\n  }\n};\n\nperson.greet();",
+    "answers": ["'John'", "undefined", "null", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 12,
+    "question": "What is the output of the following code?",
+    "code": "function greet() {\n  const sayHello = () => {\n    console.log(this);\n  };\n  sayHello();\n}\n\ngreet();",
+    "answers": ["The global object", "undefined", "null", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 13,
+    "question": "What is the output of the following code?",
+    "code": "function greet() {\n  console.log(this.name);\n}\n\nconst person = {\n  name: 'John'\n};\n\ngreet.call(person);",
+    "answers": ["'John'", "undefined", "null", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 14,
+    "question": "What is the output of the following code?",
+    "code": "const greet = () => {\n  console.log(this);\n};\n\nconst person = {\n  name: 'John'\n};\n\ngreet.call(person);",
+    "answers": [
+      "The lexical `this` value, which is the value of `this` in the context where the arrow function was defined",
+      "The object passed as the first argument to `call()`",
+      "undefined",
+      "null"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 15,
+    "question": "What is the output of the following code?",
+    "code": "function sayHello() {\n  console.log('Hello, ' + this.name + '!');\n}\n\nconst person = {\n  name: 'John',\n  sayHello: sayHello\n};\n\nperson.sayHello();",
+    "answers": [
+      "'Hello, John!'",
+      "'Hello, undefined!'",
+      "'Hello, null!'",
+      "ReferenceError"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 16,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX() {\n    return this.x;\n  }\n};\n\nconst unboundGetX = obj.getX;\nconsole.log(unboundGetX());",
+    "answers": ["undefined", "null", "'5'", "TypeError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 17,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX() {\n    const inner = function() {\n      console.log(this);\n    }\n    inner();\n  }\n};\n\nobj.getX();",
+    "answers": ["The global object", "undefined", "null", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 18,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX() {\n    const inner = () => {\n      console.log(this);\n    }\n    inner();\n  }\n};\n\nobj.getX();",
+    "answers": ["The `obj` object", "undefined", "null", "ReferenceError"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 19,
+    "question": "What is the output of the following code?",
+    "code": "function sayHello() {\n  console.log('Hello, ' + this.name + '!');\n}\n\nconst person = {\n  name: 'John',\n  sayHello: sayHello\n};\n\nconst sayHello2 = person.sayHello.bind({ name: 'Alice' });\n\nsayHello2();",
+    "answers": [
+      "'Hello, Alice!'",
+      "'Hello, John!'",
+      "'Hello, undefined!'",
+      "ReferenceError"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 20,
+    "question": "What is the output of the following code?",
+    "code": "const x = 10;\n\nconst obj = {\n  x: 5,\n  getX() {\n    return () => {\n      console.log(this.x);\n    }\n  }\n};\n\nconst unboundGetX = obj.getX();\nunboundGetX();",
+    "answers": ["5", "10", "undefined", "null"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 21,
+    "question": "What is the output of the following code?",
+    "code": "const obj = {\n  x: 5,\n  getX() {\n    return () => console.log(this.x);\n  }\n};\n\nconst obj2 = {\n  x: 10\n};\n\nconst getX = obj.getX().bind(obj2);\ngetX();",
+    "answers": ["5", "10", "undefined", "TypeError"],
+    "correctAnswer": 0
+  }
+]
