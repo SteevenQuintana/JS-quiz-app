@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { type Topycs, type Question } from '../types'
+import { topicContents } from '../constants'
 import confetti from 'canvas-confetti'
 import { persist } from 'zustand/middleware'
 
@@ -7,12 +8,18 @@ interface State {
   questions: Question[]
   currentQuestion: number
   topic: Topycs
+  content: Content[]
   fetchQuestions: (limit: number) => Promise<void>
   selectedAnswer: (questionId: number, answerIndex: number) => void
   goNextQuestion: () => void
   goPreviousQuestion: () => void
   reset: () => void
-  changeTopic: (topic: Topycs) => void
+  changeTopic: (topic: Topycs) => () => void
+}
+
+export interface Content {
+  title: string
+  content: string
 }
 
 const useQuestionsStore = create<State>()(
@@ -21,6 +28,13 @@ const useQuestionsStore = create<State>()(
       questions: [],
       currentQuestion: 0,
       topic: 'general',
+      content: [
+        {
+          title: 'Javascript',
+          content:
+            'Javascript is a programming language that allows users to interact with interfaces'
+        }
+      ],
 
       fetchQuestions: async (limit) => {
         const { topic } = get()
@@ -92,8 +106,15 @@ const useQuestionsStore = create<State>()(
         set({ questions: [], currentQuestion: 0 })
       },
 
-      changeTopic: (topic) => {
-        set({ topic, questions: [], currentQuestion: 0 })
+      changeTopic: (topic) => () => {
+        const content = topicContents[topic]
+
+        set({
+          topic,
+          questions: [],
+          currentQuestion: 0,
+          content
+        })
       }
     }),
     { name: 'questions' }

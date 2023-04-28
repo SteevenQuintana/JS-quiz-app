@@ -17,6 +17,7 @@ import {
   ArrowForwardIosOutlined
 } from '@mui/icons-material'
 import Footer from '../../components/footer/Footer'
+import Header from '../header/Header'
 
 interface QuestionProps {
   info: QuestionType
@@ -40,7 +41,7 @@ const Question: React.FC<QuestionProps> = ({ info }) => {
 
   return (
     <Card variant='outlined' sx={{ p: 2, textAlign: 'left', marginTop: 0.5 }}>
-      <Typography variant='h5'>{info.question}</Typography>
+      <Typography variant='h6'>{info.question}</Typography>
 
       {info.code != null && (
         <SyntaxHighlighter language='javascript' style={tomorrowNightBright}>
@@ -48,7 +49,7 @@ const Question: React.FC<QuestionProps> = ({ info }) => {
         </SyntaxHighlighter>
       )}
 
-      <List sx={{ bgcolor: '#333' }} disablePadding>
+      <List sx={{ bgcolor: '#333', marginTop: 1.5 }} disablePadding>
         {info.answers.map((answer, index) => (
           <ListItem key={index} disablePadding divider>
             <ListItemButton
@@ -97,6 +98,7 @@ const Game = () => {
           <ArrowForwardIosOutlined />
         </IconButton>
       </Stack>
+      <Header />
       <Question info={questionInfo} />
       <Footer />
     </>
