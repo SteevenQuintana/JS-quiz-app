@@ -57,7 +57,7 @@ const useQuestionsStore = create<State>()(
 
         //  we find the question index by comparing the question id vs question id by user
         const questionIndex = newQuestions.findIndex(
-          (question) => question.id === questionId
+          (question: Question) => question.id === questionId
         )
 
         //  we get the question information
