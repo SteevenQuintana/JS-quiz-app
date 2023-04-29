@@ -32,9 +32,7 @@ const useQuestionsStore = create<State>()(
 
       fetchQuestions: async (limit) => {
         const { topic } = get()
-        const res = await fetch(
-          `${import.meta.env.VITE_BASE_URL}/${topic}.json`
-        )
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}${topic}.json`)
         const data = await res.json()
 
         const questions = data.sort(() => Math.random() - 0.5).slice(0, limit)
