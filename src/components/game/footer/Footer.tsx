@@ -1,6 +1,6 @@
 import { Button } from '@mui/material'
-import useQuestionsStore from '../../store/questions'
-import { LIMIT_QUESTIONS } from '../../constants'
+import useQuestionsStore from '../../../store/questions'
+import { LIMIT_QUESTIONS } from '../../../constants'
 
 const Fotter = () => {
   const reset = useQuestionsStore((state) => state.reset)

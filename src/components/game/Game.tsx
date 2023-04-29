@@ -16,8 +16,8 @@ import {
   ArrowBackIosNewOutlined,
   ArrowForwardIosOutlined
 } from '@mui/icons-material'
-import Footer from '../../components/footer/Footer'
-import Header from '../header/Header'
+import Footer from './footer/Footer'
+import Header from './header/Header'
 
 interface QuestionProps {
   info: QuestionType

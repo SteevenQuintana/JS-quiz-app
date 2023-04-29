@@ -1,4 +1,4 @@
-import useQuestionsData from '../../hooks/useQuestionsData'
+import useQuestionsData from '../../../hooks/useQuestionsData'
 
 const Header = () => {
   const { correctAnswers, incorrectAnswers, unansweredQuestions } =

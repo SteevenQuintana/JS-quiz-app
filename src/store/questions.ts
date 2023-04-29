@@ -14,7 +14,7 @@ interface State {
   goNextQuestion: () => void
   goPreviousQuestion: () => void
   reset: () => void
-  changeTopic: (topic: Topycs) => () => void
+  changeTopic: (topic: Topycs) => void
 }
 
 export interface Content {
@@ -28,17 +28,13 @@ const useQuestionsStore = create<State>()(
       questions: [],
       currentQuestion: 0,
       topic: 'general',
-      content: [
-        {
-          title: 'Javascript',
-          content:
-            'Javascript is a programming language that allows users to interact with interfaces'
-        }
-      ],
+      content: topicContents.general,
 
       fetchQuestions: async (limit) => {
         const { topic } = get()
-        const res = await fetch(`http://127.0.0.1:5173/${topic}.json`)
+        const res = await fetch(
+          `${import.meta.env.VITE_BASE_URL}/${topic}.json`
+        )
         const data = await res.json()
 
         const questions = data.sort(() => Math.random() - 0.5).slice(0, limit)
@@ -106,7 +102,7 @@ const useQuestionsStore = create<State>()(
         set({ questions: [], currentQuestion: 0 })
       },
 
-      changeTopic: (topic) => () => {
+      changeTopic: (topic) => {
         const content = topicContents[topic]
 
         set({
