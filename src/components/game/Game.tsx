@@ -1,23 +1,18 @@
 import {
   Card,
-  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
-  Stack,
   Typography
 } from '@mui/material'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { tomorrowNightBright } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import useQuestionsStore from '../../store/questions'
 import { type Question as QuestionType } from '../../types'
-import {
-  ArrowBackIosNewOutlined,
-  ArrowForwardIosOutlined
-} from '@mui/icons-material'
+
 import Footer from './footer/Footer'
-import Header from './header/Header'
+import Indicator from './indicator/Indicator'
 
 interface QuestionProps {
   info: QuestionType
@@ -40,7 +35,7 @@ const Question: React.FC<QuestionProps> = ({ info }) => {
   }
 
   return (
-    <Card variant='outlined' sx={{ p: 2, textAlign: 'left', marginTop: 0.5 }}>
+    <Card variant='outlined' sx={{ p: 1, textAlign: 'left', marginTop: 0.5 }}>
       <Typography variant='h6'>{info.question}</Typography>
 
       {info.code != null && (
@@ -49,7 +44,7 @@ const Question: React.FC<QuestionProps> = ({ info }) => {
         </SyntaxHighlighter>
       )}
 
-      <List sx={{ bgcolor: '#333', marginTop: 1.5 }} disablePadding>
+      <List sx={{ bgcolor: '#333', marginTop: 1 }} disablePadding>
         {info.answers.map((answer, index) => (
           <ListItem key={index} disablePadding divider>
             <ListItemButton
@@ -69,39 +64,21 @@ const Question: React.FC<QuestionProps> = ({ info }) => {
 const Game = () => {
   const questions = useQuestionsStore((state) => state.questions)
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion)
-  const goNextQuestion = useQuestionsStore((state) => state.goNextQuestion)
-  const goPreviousQuestion = useQuestionsStore(
-    (state) => state.goPreviousQuestion
-  )
 
   const questionInfo = questions[currentQuestion]
 
   return (
-    <>
-      <Stack
-        direction='row'
-        gap={2}
-        alignItems='center'
-        justifyContent='center'
-      >
-        <IconButton
-          onClick={goPreviousQuestion}
-          disabled={currentQuestion === 0}
-        >
-          <ArrowBackIosNewOutlined />
-        </IconButton>
-        {currentQuestion + 1}/{questions.length}
-        <IconButton
-          onClick={goNextQuestion}
-          disabled={currentQuestion === questions.length - 1}
-        >
-          <ArrowForwardIosOutlined />
-        </IconButton>
-      </Stack>
-      <Header />
+    <div
+      style={{
+        position: 'relative',
+        marginTop: '28px',
+        minHeight: '400px'
+      }}
+    >
+      <Indicator />
       <Question info={questionInfo} />
       <Footer />
-    </>
+    </div>
   )
 }
 

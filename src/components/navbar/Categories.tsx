@@ -1,9 +1,5 @@
 import { useState } from 'react'
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Container
-} from '@mui/material'
+import { BottomNavigation, BottomNavigationAction } from '@mui/material'
 import { LIMIT_QUESTIONS, SUPPORTED_TOPICS } from '../../constants'
 import useQuestionsStore from '../../store/questions'
 import { type Topycs } from '../../types'
@@ -19,12 +15,12 @@ const Categories = () => {
   const [value, setValue] = useState(initialValue)
 
   return (
-    <Container className='categories'>
+    <div className='categories'>
       <Logo />
       <BottomNavigation
         showLabels
         value={value}
-        sx={{ display: 'flex', maxWidth: '460px' }}
+        sx={{ display: 'flex', maxWidth: '460px', width: '100%' }}
       >
         {categories.map(([key, label], index) => (
           <BottomNavigationAction
@@ -38,7 +34,7 @@ const Categories = () => {
           />
         ))}
       </BottomNavigation>
-    </Container>
+    </div>
   )
 }
 
