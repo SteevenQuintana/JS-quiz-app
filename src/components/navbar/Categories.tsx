@@ -1,8 +1,13 @@
 import { useState } from 'react'
-import { BottomNavigation, BottomNavigationAction } from '@mui/material'
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Container
+} from '@mui/material'
 import { LIMIT_QUESTIONS, SUPPORTED_TOPICS } from '../../constants'
 import useQuestionsStore from '../../store/questions'
 import { type Topycs } from '../../types'
+import Logo from './Logo'
 
 const categories = Object.entries(SUPPORTED_TOPICS)
 
@@ -14,24 +19,26 @@ const Categories = () => {
   const [value, setValue] = useState(initialValue)
 
   return (
-    <BottomNavigation
-      showLabels
-      value={value}
-      onChange={() => {
-        fetchQuestions(LIMIT_QUESTIONS)
-      }}
-    >
-      {categories.map(([key, label], index) => (
-        <BottomNavigationAction
-          key={key}
-          label={label}
-          onClick={() => {
-            changeTopic(key as Topycs)
-            setValue(index)
-          }}
-        />
-      ))}
-    </BottomNavigation>
+    <Container className='categories'>
+      <Logo />
+      <BottomNavigation
+        showLabels
+        value={value}
+        sx={{ display: 'flex', maxWidth: '460px' }}
+      >
+        {categories.map(([key, label], index) => (
+          <BottomNavigationAction
+            key={key}
+            label={label}
+            onClick={() => {
+              changeTopic(key as Topycs)
+              fetchQuestions(LIMIT_QUESTIONS)
+              setValue(index)
+            }}
+          />
+        ))}
+      </BottomNavigation>
+    </Container>
   )
 }
 
